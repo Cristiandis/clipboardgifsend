@@ -1,7 +1,7 @@
-# Vendetta Plugin Template
-This repo contains a template for creating a [Vendetta](https://github.com/vendetta-mod/Vendetta) plugin.
+# ClipboardGIFSend
+Sends gif links to clipboard instead of chat
 
 # How to install?
-Paste this plugin's URL into the Plugins page of Vendetta, following a basic format of:
+Paste this plugin's URL into the Plugins page of Kettu, following a basic format of:
 
-https://`YOUR_GITHUB_USERNAME`.github.io/`REPO_NAME`
+https://cristiandis.github.io/clipboardgifsend
