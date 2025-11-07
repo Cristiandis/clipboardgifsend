@@ -44,9 +44,14 @@ try {
             if (isGifUrl && gifPickerActive) {
                 clipboard.setString(content);
                 
-                const Toasts = findByProps("showToast");
-                if (Toasts?.showToast) {
-                    Toasts.showToast("GIF URL copied to clipboard!", Toasts.ToastType?.SUCCESS);
+                const Toasts = findByProps("showToast", "open");
+                if (Toasts?.open) {
+                    Toasts.open({
+                        content: "GIF URL copied to clipboard!",
+                        source: { icon: "ic_check_24px" }
+                    });
+                } else if (Toasts?.showToast) {
+                    Toasts.showToast("GIF URL copied to clipboard!");
                 }
                 
                 gifPickerActive = false;
