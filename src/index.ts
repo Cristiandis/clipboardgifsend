@@ -16,15 +16,29 @@ try {
         
         const content = message?.content?.trim();
         
-        const isGif = content && 
-                     content.startsWith('http') && 
-                     !content.includes(' ') &&
-                     (content.endsWith('.gif') || 
-                      content.includes('cdn.discordapp.com/attachments') ||
-                      content.includes('tenor.com') ||
-                      content.includes('giphy.com'));
+        const isJustUrl = content && 
+                         content.startsWith('http') && 
+                         !content.includes(' ') &&
+                         !content.includes('\n');
         
-        if (isGif) {
+        const isGifUrl = isJustUrl && 
+                        (content.endsWith('.gif') || 
+                         content.includes('cdn.discordapp.com/attachments') ||
+                         content.includes('tenor.com') ||
+                         content.includes('giphy.com'));
+        
+        const isFromGifPicker = message?.type === undefined && 
+                               message?.tts === false &&
+                               isGifUrl;
+        
+        console.log("Message debug:", {
+            content,
+            type: message?.type,
+            tts: message?.tts,
+            keys: Object.keys(message || {})
+        });
+        
+        if (isFromGifPicker) {
             clipboard.setString(content);
             
             const Toasts = findByProps("showToast");
